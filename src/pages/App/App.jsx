@@ -1,6 +1,6 @@
 import AuthPage from '../AuthPage/AuthPage';
-import NewOrderPage from '../NewOrderPage/NewOrderPage';
-import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+import NewPostPage from '../NewPostPage/NewPostPage';
+import AllPostPage from '../AllPostPage/AllPostPage';
 import NavBar from '../../components/NavBar/NavBar';
 
 import './App.css';
@@ -15,13 +15,13 @@ function App() {
 
   return (
     <main className='App'>
-      MERN-L CHEESEBURGER
+      MC Materials
       { user ?
       <>
         <NavBar user={ user } setUser={ setUser } />
         <Routes>
-          <Route path='/orders/new' element={ <NewOrderPage /> } />
-          <Route path='/orders' element={ <OrderHistoryPage /> } />
+          <Route path='posts/new' element={ <NewPostPage /> } />
+          <Route path='/' element={ <AllPostPage /> } />
         </Routes>
       </>
           :
