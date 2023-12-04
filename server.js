@@ -8,15 +8,7 @@ require('dotenv').config();
 // Connect to the database
 require('./config/database');
 
-// Require the Mongoose models
-// const User = require('./models/user');
-// const Item = require('./models/item');
-// const Category = require('./models/category');
-// const Order = require('./models/order');
-
-// Local variables will come in handy for holding retrieved documents
-let user, item, category, order;
-let users, items, categories, orders;
+const postsRouter = require('./routes/api/posts');
 
 const app = express();
 
@@ -33,6 +25,11 @@ app.use(require('./config/checkToken'))
 // Put API routes here, before the "catch all" route
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/users/login', require('./routes/api/users'))
+
+// Component Routers
+const ensureLoggedIn = require('./config/ensureLoggedIn')
+app.use('/api/posts', ensureLoggedIn, postsRouter)
+
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests

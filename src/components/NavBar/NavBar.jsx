@@ -14,6 +14,8 @@ export default function NavBar({ user, setUser }) {
     <nav>
       <Link to='/' >Home</Link>
       &nbsp; | &nbsp;
+      <Link to='/posts' >All posts</Link>
+      &nbsp; | &nbsp;
       <Link to='/posts/new' >Create Post</Link>
       &nbsp;&nbsp;
       <span>Hello, { user.name }</span>
