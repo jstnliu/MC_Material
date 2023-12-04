@@ -7,7 +7,13 @@ export function getAllPosts() {
     return sendRequest(BASE_URL)
 }
 
-// add post to feed? 
-export function addPostToFeed(postId) {
-    return sendRequest(`${BASE_URL}/feed/posts/${postId}`, 'POST')
+export async function createPost(postData) {
+    try {
+        const apiResponse = await sendRequest('/api/posts/new', 'POST', postData)
+        console.log('Post success:', apiResponse)
+        return apiResponse
+    } catch(error) {
+        console.error('Error with API creating post:', error)
+        throw error
+    }
 }

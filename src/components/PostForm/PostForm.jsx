@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { createPost } from '../../utilities/posts-api'
 import './PostForm.css'
 
 export default function PostForm({ addPost }) {
@@ -14,14 +15,19 @@ export default function PostForm({ addPost }) {
     setPostData(newPostData)
   }
 
-  function handleAddPost(event) {
+  async function handleAddPost(event) {
     event.preventDefault()
-    addPost(postData)
-    setPostData({
-      character: '',
-      rating: 3,
-      review: ''
-    })
+    try {
+      const postResponse = await createPost(postData)
+      addPost(postResponse)
+      setPostData({
+        character: '',
+        rating: 3,
+        review: ''
+      })
+    } catch(error) {
+      console.error('Error creating post: ', error)
+    }
   }
 
   return (

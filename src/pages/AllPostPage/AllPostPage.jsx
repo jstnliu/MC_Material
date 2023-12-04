@@ -1,5 +1,5 @@
 
-import PostItem from '../components/PostItem/PostItem'
+import PostItem from '../../components/PostItem/PostItem'
 
 export default function AllPostPage({ posts }) {
   

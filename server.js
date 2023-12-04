@@ -8,6 +8,7 @@ require('dotenv').config();
 // Connect to the database
 require('./config/database');
 
+const usersRouter = require('./routes/api/users')
 const postsRouter = require('./routes/api/posts');
 
 const app = express();
@@ -23,8 +24,8 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use(require('./config/checkToken'))
 
 // Put API routes here, before the "catch all" route
-app.use('/api/users', require('./routes/api/users'));
-app.use('/api/users/login', require('./routes/api/users'))
+app.use('/api/users', usersRouter);
+app.use('/api/users/login', usersRouter)
 
 // Component Routers
 const ensureLoggedIn = require('./config/ensureLoggedIn')
