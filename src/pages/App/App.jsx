@@ -15,7 +15,7 @@ function App() {
   
   const [user, setUser] = useState(getUser)
   const [posts, setPosts] = useState([])
-  const [goToHome, setGoToHome] = useState(false)
+  // const [goToHome, setGoToHome] = useState(false)
 
   function addPost(post) {
     setPosts([...posts, post])
@@ -25,10 +25,9 @@ function App() {
   //   setGoToHome(false)
   // }
 
-  useEffect(() => {
-    getCharacter(544)
-    // setGoToHome(false)
-  }, [])
+  // useEffect(() => {
+  //   getCharacter(544)
+  // }, [])
 
   return (
     <main className='App'>
@@ -38,8 +37,8 @@ function App() {
         <>
           <NavBar user={ user } setUser={ setUser } />
           <Routes>
-            <Route path='/posts/new' element={ <NewPostPage addPost={ addPost } setGoToHome={ setGoToHome } /> } />
-            <Route path='/posts' element={ <AllPostPage posts={ posts } /> } />
+            <Route path='/posts/new' element={ <NewPostPage addPost={ addPost } /> } />
+            <Route path='/posts' element={ <AllPostPage user={ user } /> } />
             <Route path='/' element={ <Navigate to='/posts' /> } />
           </Routes>
         </>

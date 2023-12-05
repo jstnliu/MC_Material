@@ -8,7 +8,7 @@ export function getAllPosts() {
 }
 
 export function createPost(postData) {
-        const apiResponse = sendRequest(`${BASE_URL}/new`, 'POST', postData)
-        console.log('Post success:', apiResponse)
-        return apiResponse
+    const apiResponse = sendRequest(`${BASE_URL}/new`, 'POST', postData)
+    console.log('Post success:', apiResponse)
+    return apiResponse
 }

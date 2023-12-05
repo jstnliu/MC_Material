@@ -1,13 +1,15 @@
-import React from 'react'
+import './PostItem.css'
 
-export default function PostItem({ post, idx }) {
+export default function PostItem({ idx, postItem }) {
+
   return (
     <>
-    <div>
-    <h4>{ post.character }</h4>
-    <p>{ post.rating }</p>
-    <p>{ post.review }</p>
-  </div>
+      <div className='postBorder'>
+        <h4>{ postItem.character }</h4>
+        <p>{ postItem.rating }</p>
+        <p>{ postItem.review }</p>
+        {/* separate prop for unique user.name */}
+      </div>
     </>
   )
 }
