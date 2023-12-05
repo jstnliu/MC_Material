@@ -22,9 +22,9 @@ const postSchema = new Schema ({
         required: true
     },
     character: {
-        type: Schema.Types.ObjectId,
-        ref: 'Character',
-        required: true
+        type: String
+        // ref: 'Character',
+        // required: true
     },
     rating: {
         type: Number,

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { createPost } from '../../utilities/posts-api'
+import axios from 'axios'
 import './PostForm.css'
 
 export default function PostForm({ addPost }) {
@@ -11,23 +12,19 @@ export default function PostForm({ addPost }) {
   })
 
   function handleChange(event) {
-    const newPostData = { ...postData, [event.target.name]: [event.target.value] }
+    const newPostData = { ...postData, [event.target.name]: event.target.value }
     setPostData(newPostData)
   }
 
-  async function handleAddPost(event) {
+  function handleAddPost(event) {
     event.preventDefault()
-    try {
-      const postResponse = await createPost(postData)
-      addPost(postResponse)
-      setPostData({
-        character: '',
-        rating: 3,
-        review: ''
-      })
-    } catch(error) {
-      console.error('Error creating post: ', error)
-    }
+    const postResponse = createPost(postData)
+    addPost(postResponse)
+    setPostData({
+      character: '',
+      rating: 3,
+      review: ''
+  })
   }
 
   return (
@@ -39,6 +36,7 @@ export default function PostForm({ addPost }) {
           Character
         </label>
           <input
+            type='text'
             name='character'
             onChange={ handleChange }
             value={ postData.character }
@@ -61,6 +59,7 @@ export default function PostForm({ addPost }) {
           Review
         </label>
           <textarea
+            type='text'
             name='review'
             onChange={ handleChange }
             value={ postData.review }

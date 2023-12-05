@@ -19,8 +19,10 @@ async function show(req, res) {
 async function create(req, res) {
     req.body.user = req.user._id
     req.body.userName = req.user.name
+    console.log(req.body)
     try {
-        const post = await Post.createPost(req.body)
+        // const post = await Post.createPost(req.body)
+        const post = await Post.create(req.body)
         res.json(post)
     } catch(error) {
         console.log(error)

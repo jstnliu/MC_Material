@@ -7,13 +7,8 @@ export function getAllPosts() {
     return sendRequest(BASE_URL)
 }
 
-export async function createPost(postData) {
-    try {
-        const apiResponse = await sendRequest('/api/posts/new', 'POST', postData)
+export function createPost(postData) {
+        const apiResponse = sendRequest(`${BASE_URL}/new`, 'POST', postData)
         console.log('Post success:', apiResponse)
         return apiResponse
-    } catch(error) {
-        console.error('Error with API creating post:', error)
-        throw error
-    }
 }
