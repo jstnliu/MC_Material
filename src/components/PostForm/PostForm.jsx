@@ -1,10 +1,10 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { createPost } from '../../utilities/posts-api'
-import axios from 'axios'
 import './PostForm.css'
 
 export default function PostForm({ addPost }) {
-
+  const navigate = useNavigate()
   const [postData, setPostData] = useState({
     character: '',
     rating: 3,
@@ -24,7 +24,9 @@ export default function PostForm({ addPost }) {
       character: '',
       rating: 3,
       review: ''
-  })
+    });
+    // redirect to 'post/:id' eventually
+    // navigate('/posts/:id')
   }
 
   return (
@@ -65,7 +67,11 @@ export default function PostForm({ addPost }) {
             value={ postData.review }
           >
           </textarea>
-        <button type='submit'>POST</button>
+        <button 
+          type='submit'  
+        >
+          POST
+        </button>
     </form>
     </>
   )

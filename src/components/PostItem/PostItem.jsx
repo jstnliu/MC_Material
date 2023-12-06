@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom'
 import './PostItem.css'
 
-export default function PostItem({ idx, postItem }) {
+export default function PostItem({ postItem }) {
 
   return (
     <>
@@ -9,6 +10,7 @@ export default function PostItem({ idx, postItem }) {
         <p>{ postItem.rating }</p>
         <p>{ postItem.review }</p>
         {/* separate prop for unique user.name */}
+        <Link to='/posts/:id'>View Details</Link>
       </div>
     </>
   )

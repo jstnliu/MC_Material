@@ -15,10 +15,13 @@ export default function AllPostPage() {
   }, [])
   
   const postItem = postItems.map((post, idx) =>
-    <PostItem 
-      key={ idx } 
-      postItem={ post }
-    />) 
+    <>
+      <PostItem 
+        key={ idx } 
+        postItem={ post }
+      />
+    </>
+  ) 
 
   return (
     <>
