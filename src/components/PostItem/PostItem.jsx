@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './PostItem.css'
 
 export default function PostItem({ postItem }) {
+
+  const navigate = useNavigate()
 
   return (
     <>
@@ -10,7 +12,11 @@ export default function PostItem({ postItem }) {
         <p>{ postItem.rating }</p>
         <p>{ postItem.review }</p>
         {/* separate prop for unique user.name */}
-        <Link to='/posts/:id'>View Details</Link>
+        <button
+          onClick={ () => navigate(`/posts/${postItem._id}`) }
+        >
+          View Post
+        </button>
       </div>
     </>
   )

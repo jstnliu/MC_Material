@@ -1,26 +1,26 @@
+import PostItem from '../../components/PostItem/PostItem'
+
 import { useState, useEffect } from 'react'
 import * as postsAPI from '../../utilities/posts-api'
-import PostItem from '../../components/PostItem/PostItem'
 
 export default function AllPostPage() {
   
-  const[postItems, setPostItems] = useState([])
+  const [postItems, setPostItems] = useState([])
   
-  useEffect(function() {
-    async function getPosts() {
+  // display all posts on page render
+  useEffect(() => {
+    const getPosts = async () => {
       const allPosts = await postsAPI.getAllPosts();
       setPostItems(allPosts)
     }
     getPosts();
   }, [])
   
-  const postItem = postItems.map((post, idx) =>
-    <>
-      <PostItem 
-        key={ idx } 
-        postItem={ post }
-      />
-    </>
+  const postItem = postItems.map((post) =>
+    <PostItem 
+      key={ post._id } 
+      postItem={ post }
+    />
   ) 
 
   return (

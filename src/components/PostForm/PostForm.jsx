@@ -25,8 +25,8 @@ export default function PostForm({ addPost }) {
       rating: 3,
       review: ''
     });
-    // redirect to 'post/:id' eventually
-    // navigate('/posts/:id')
+    // redirect to 'posts/:id' eventually
+    navigate('/posts')
   }
 
   return (

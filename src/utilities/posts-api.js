@@ -16,6 +16,7 @@ export function createPost(postData) {
 
 // retrieve specific post
 export function viewPost(id) {
-    const response = sendRequest(`${BASE_URL}/posts/${id}`, 'GET', id)
+    const response = sendRequest(`${BASE_URL}/posts/${id}`, 'GET')
+    console.log('Post success grab:', response)
     return response
 }
