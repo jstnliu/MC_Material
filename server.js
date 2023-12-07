@@ -29,7 +29,7 @@ app.use('/api/users/login', usersRouter)
 
 // Component Routers
 const ensureLoggedIn = require('./config/ensureLoggedIn')
-app.use('/api/posts', ensureLoggedIn, postsRouter)
+app.use('/api/posts', postsRouter)
 
 
 // The following "catch all" route (note the *) is necessary

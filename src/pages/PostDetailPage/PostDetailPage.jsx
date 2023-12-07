@@ -20,8 +20,9 @@ export default function PostDetailPage({ posts, setPosts }) {
   return (
     <>
       <PostDetailItem 
+        setPostDetails={ setPostDetails } 
         postDetails={ postDetails } 
-        posts={ posts }
+        posts={ posts } 
         setPosts={ setPosts }
       />
     </>

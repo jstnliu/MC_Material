@@ -24,6 +24,6 @@ export function viewPost(id) {
 // find specific post 
 export function deletePost(id) {
     const response = sendRequest(`${BASE_URL}/${id}`, 'DELETE')
-    console.log('Post deleted')
+    console.log('passed from front end', response)
     return response
 }

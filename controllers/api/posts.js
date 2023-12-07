@@ -1,3 +1,4 @@
+
 const Post = require('../../models/post')
 
 module.exports = {
@@ -6,6 +7,26 @@ module.exports = {
     create,
     delete: deletePost
 }
+
+ async function deletePost(req, res) {
+    // Check if user is logged in
+    if (!req.user) return res.status(401).json({msg: 'Not Logged In'})
+    try {
+        // find desired post for deletion
+        const postToDelete = await Post.findById(req.params.id);
+        // check for current user to match post user
+        if (!postToDelete.user.equals(req.user._id)) {
+            return res.status(401).json({msg: 'Not Your Post to Delete'})
+        }
+        // delete post
+        await Post.deleteOne(postToDelete)
+        // post.save()
+        res.status(201).json({msg: 'Post Deleted!'})
+        // catch error
+    }   catch (error) {
+        res.error(error)
+    }
+  }
 
 async function index(req ,res) {
     const index = await Post.find({})
@@ -30,12 +51,27 @@ async function create(req, res) {
     }
 }
 
-async function deletePost(req, res) {
-    Post.findOne({
-        'posts._id': req.params.id,
-        'posts.user': req.user._id
-    }).then ((post) => {
-        if(!post) return 
-    })
-}
 
+
+// const postToDelete =  await Post.findById({
+    // // find desired post for deletion
+    // const post = await Post.findById(req.params.id);
+    // // check for current user to match post user
+    // if (!post.user.equals(req.user._id)) 
+    //     return res.status(401).json({msg: 'Not Your Post to Delete'})
+    // // remove post
+    // post.remove(req.params.id).then(() => res.status(201).json({msg: 'Post Deleted!'}))
+    // // catch error
+    // .catch ((error) => {
+    //     res.json(error)
+    // })
+//     'posts._id': req.params.id,
+// });
+// console.log(postToDelete)
+    // }).then ((post) => {
+    //     if(!post) return res.status(401).json({msg: 'Not Your Post to Delete'})
+    //     post.remove(req.params.id)
+    //     post.save().then(() => res.status(201).json({msg: 'Post Deleted!'}))
+    // }).catch ((err) => {
+    //     res.status(401).json({msg: 'Skipped Rest'})
+    // })

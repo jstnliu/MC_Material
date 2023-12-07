@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt = require('bcrypt')
-
+const posts = require('../models/post')
 const SALT_ROUNDS = 6
 
 const userSchema = new Schema({
@@ -21,7 +21,8 @@ const userSchema = new Schema({
         trim: true, 
         minLength: 3,
         required: true
-    }        
+    },
+    posts: [posts.schema]        
 }, {
     timestamps: true,
     toJSON: {

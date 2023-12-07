@@ -12,7 +12,8 @@ router.get('/:id', postsCtrl.show)
 // POST /api/posts/new
 router.post('/new', postsCtrl.create)
 // delete post
-// DELETE own comment
-router.delete('/post/:id', ensureLoggedIn, postsCtrl.delete)
+// DELETE own post
+// DELETE /api/posts/:id
+router.delete('/:id', postsCtrl.delete)
 
 module.exports = router

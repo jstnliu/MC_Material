@@ -36,7 +36,7 @@ function App() {
             <Route path='/posts/new' element={ <NewPostPage addPost={ addPost } /> } />
             <Route path='/posts' element={ <AllPostPage user={ user } /> } />
             <Route path='/' element={ <Navigate to='/posts' /> } />
-            <Route path='/posts/:id' element={ <PostDetailPage setPosts={ setPosts } /> } />
+            <Route path='/posts/:id' element={ <PostDetailPage posts={ posts } setPosts={ setPosts } /> } />
           </Routes>
         </>
             :
