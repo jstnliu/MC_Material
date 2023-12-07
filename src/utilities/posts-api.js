@@ -16,7 +16,14 @@ export function createPost(postData) {
 
 // retrieve specific post
 export function viewPost(id) {
-    const response = sendRequest(`${BASE_URL}/${id}`, 'GET')
+    const response = sendRequest(`${BASE_URL}/${id}`)
     console.log('Post success grab:', response)
+    return response
+}
+
+// find specific post 
+export function deletePost(id) {
+    const response = sendRequest(`${BASE_URL}/${id}`, 'DELETE')
+    console.log('Post deleted')
     return response
 }

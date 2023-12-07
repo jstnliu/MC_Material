@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import * as postsAPI from '../../utilities/posts-api'
 
-export default function PostDetailPage() {
+export default function PostDetailPage({ posts, setPosts }) {
 
   const [postDetails, setPostDetails] = useState([])
   const { id } = useParams()
@@ -13,15 +13,17 @@ export default function PostDetailPage() {
     const handlePostView = async () => {
       const singlePost = await postsAPI.viewPost(id);
       setPostDetails(singlePost)
-      console.log(postDetails)
-      console.log(singlePost)
     };
     handlePostView()
-  }, [])
+  }, [id])
 
   return (
     <>
-      <PostDetailItem postDetails={ postDetails } />
+      <PostDetailItem 
+        postDetails={ postDetails } 
+        posts={ posts }
+        setPosts={ setPosts }
+      />
     </>
   )
 }

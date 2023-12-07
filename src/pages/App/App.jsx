@@ -16,15 +16,10 @@ function App() {
   
   const [user, setUser] = useState(getUser)
   const [posts, setPosts] = useState([])
-  // const [goToHome, setGoToHome] = useState(false)
 
   function addPost(post) {
     setPosts([...posts, post])
   }
-
-  // function handleClick() {
-  //   setGoToHome(false)
-  // }
 
   // useEffect(() => {
   //   getCharacter(544)
@@ -33,7 +28,7 @@ function App() {
   return (
     <main className='App'>
       {/* {goToHome && <Navigate to='/' /> } */}
-        MC Materials
+        MC Material
         { user ?
         <>
           <NavBar user={ user } setUser={ setUser } />
@@ -41,14 +36,12 @@ function App() {
             <Route path='/posts/new' element={ <NewPostPage addPost={ addPost } /> } />
             <Route path='/posts' element={ <AllPostPage user={ user } /> } />
             <Route path='/' element={ <Navigate to='/posts' /> } />
-            <Route path='/posts/:id' element={ <PostDetailPage /> } />
-            
+            <Route path='/posts/:id' element={ <PostDetailPage setPosts={ setPosts } /> } />
           </Routes>
         </>
             :
             <AuthPage setUser={ setUser } />
         }
-        {/* <NewPostPage addPost={ addPost } /> */}
     </main>
   );
 }
