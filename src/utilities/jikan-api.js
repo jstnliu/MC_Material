@@ -1,7 +1,8 @@
 import axios from "axios"
-import axiosRequest from "./axios-request"
+// import axiosRequest from "./axiosRequest"
 
-let BASE_URL='https://api.jikan.moe/v4'
+const BASE_URL='https://api.jikan.moe/v4'
+const queryParams = { limit: '5' }
 
 // retrieve anime info
 export async function getAnime(id) {
@@ -10,11 +11,11 @@ export async function getAnime(id) {
         // console.log(animeInfo.data.data)
         const animeInfo = await axios(`${BASE_URL}/anime/${id}/full`)
         if (animeInfo.data) {
-            const anime = animeInfo.data
+            const anime = animeInfo.data.data
             const animeData = {
                 title_english: anime.title_english,
                 title_japanese: anime.title_japanese,
-                // images: anime.images.jpg.image_url,
+                images: anime.images.jpg.image_url,
                 synopsis: anime.synopsis,
                 episodes: anime.episodes,
                 mal_id: anime.mal_id
@@ -37,19 +38,23 @@ export async function getAnime(id) {
 // search for anime 
 export async function searchAnimeResults(search) {
     try {
-        const animeSearch = await axios(`${BASE_URL}/anime?q=${search}`)
+        const animeSearch = await axios.get(`${BASE_URL}/anime?q=${search}`, {
+            params: queryParams
+        })
         if (animeSearch.data) {
-            const anime = animeSearch.data
-            const animeResultData = {
-                title_english: anime.title_english,
-                title_japanese: anime.title_japanese,
-                images: anime.images.jpg.image_url,
-                synopsis: anime.synopsis,
-                episodes: anime.episodes,
-                mal_id: anime.mal_id
-            };
-            console.log(animeResultData)
-            return animeResultData
+            const animeResults = animeSearch.data.data
+            const animeResultsData = animeResults.map(anime => {
+                return {
+                    title_english: anime.title_english,
+                    title_japanese: anime.title_japanese,
+                    images: anime.images.jpg.image_url,
+                    synopsis: anime.synopsis,
+                    episodes: anime.episodes,
+                    mal_id: anime.mal_id
+                }
+            });
+            console.log(animeResultsData)
+            return animeResultsData
         }
     } catch(error) {
         console.error('Ya done Goofed Searchin', error);

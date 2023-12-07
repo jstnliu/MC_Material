@@ -1,4 +1,4 @@
-const Character = require('../../models/character')
+const Anime = require('../../models/anime')
 
 // module.exports = {
 

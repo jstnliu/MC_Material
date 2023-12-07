@@ -1,5 +1,3 @@
-import SearchForm from '../../components/SearchForm/SearchForm'
-
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createPost } from '../../utilities/posts-api'
@@ -32,7 +30,6 @@ export default function PostForm({ addPost }) {
 
   return (
     <>
-    <SearchForm />
     <form
       onSubmit={ handleAddPost }
     >
