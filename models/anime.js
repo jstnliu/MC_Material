@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
-const characterSchema = new Schema ({
-    name: {
+const animeSchema = new Schema ({
+    title_english: {
+        type: String
+    },
+    title_japanese: {
         type: String
     },
     images: {
@@ -11,12 +14,12 @@ const characterSchema = new Schema ({
     about: {
         type: String
     },
-    anime: {
+    episodes: {
         type: String
     },
-    nicknames: {
-        type: String
+    mal_id: {
+        type: Number
     }
 })
 
-module.exports = mongoose.models('Character', characterSchema)
+module.exports = mongoose.models('Anime', animeSchema)

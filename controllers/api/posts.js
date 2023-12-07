@@ -20,7 +20,6 @@ module.exports = {
         }
         // delete post
         await Post.deleteOne(postToDelete)
-        // post.save()
         res.status(201).json({msg: 'Post Deleted!'})
         // catch error
     }   catch (error) {
@@ -51,27 +50,3 @@ async function create(req, res) {
     }
 }
 
-
-
-// const postToDelete =  await Post.findById({
-    // // find desired post for deletion
-    // const post = await Post.findById(req.params.id);
-    // // check for current user to match post user
-    // if (!post.user.equals(req.user._id)) 
-    //     return res.status(401).json({msg: 'Not Your Post to Delete'})
-    // // remove post
-    // post.remove(req.params.id).then(() => res.status(201).json({msg: 'Post Deleted!'}))
-    // // catch error
-    // .catch ((error) => {
-    //     res.json(error)
-    // })
-//     'posts._id': req.params.id,
-// });
-// console.log(postToDelete)
-    // }).then ((post) => {
-    //     if(!post) return res.status(401).json({msg: 'Not Your Post to Delete'})
-    //     post.remove(req.params.id)
-    //     post.save().then(() => res.status(201).json({msg: 'Post Deleted!'}))
-    // }).catch ((err) => {
-    //     res.status(401).json({msg: 'Skipped Rest'})
-    // })

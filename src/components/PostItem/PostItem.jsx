@@ -8,7 +8,7 @@ export default function PostItem({ postItem }) {
   return (
     <>
       <div className='postBorder'>
-        <h4>{ postItem.character }</h4>
+        <h4>{ postItem.anime }</h4>
         <p>{ postItem.rating }</p>
         <p>{ postItem.review }</p>
         {/* separate prop for unique user.name */}

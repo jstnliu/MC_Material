@@ -1,3 +1,5 @@
+import SearchForm from '../../components/SearchForm/SearchForm'
+
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createPost } from '../../utilities/posts-api'
@@ -6,7 +8,7 @@ import './PostForm.css'
 export default function PostForm({ addPost }) {
   const navigate = useNavigate()
   const [postData, setPostData] = useState({
-    character: '',
+    anime: '',
     rating: 3,
     review: ''
   })
@@ -21,27 +23,27 @@ export default function PostForm({ addPost }) {
     const postResponse = createPost(postData)
     addPost(postResponse)
     setPostData({
-      character: '',
+      anime: '',
       rating: 3,
       review: ''
     });
-    // redirect to 'posts/:id' eventually
     navigate('/posts')
   }
 
   return (
     <>
+    <SearchForm />
     <form
       onSubmit={ handleAddPost }
     >
         <label className='Font'>
-          Character
+          Anime
         </label>
           <input
             type='text'
-            name='character'
+            name='anime'
             onChange={ handleChange }
-            value={ postData.character }
+            value={ postData.anime }
           />
         <label className='Font'>
           Rating

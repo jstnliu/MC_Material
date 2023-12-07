@@ -21,10 +21,11 @@ const postSchema = new Schema ({
         ref: 'User',
         required: true
     },
-    character: {
-        type: String
-        // ref: 'Character',
-        // required: true
+    anime: {
+        type: String,
+        required: true
+        // type: Schema.Types.ObjectId,
+        // ref: 'Anime',
     },
     rating: {
         type: Number,
