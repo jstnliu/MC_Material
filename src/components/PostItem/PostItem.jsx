@@ -9,7 +9,7 @@ export default function PostItem({ postItem }) {
     <>
       <div className='postBorder'>
         <h4>{ postItem.anime }</h4>
-        <p>{ postItem.rating }</p>
+        <p>Rating: { postItem.rating }</p>
         <p>{ postItem.review }</p>
         {/* separate prop for unique user.name */}
         <button
