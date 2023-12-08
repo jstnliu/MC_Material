@@ -22,10 +22,9 @@ const postSchema = new Schema ({
         required: true
     },
     anime: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Anime',
         required: true
-        // type: Schema.Types.ObjectId,
-        // ref: 'Anime',
     },
     rating: {
         type: Number,

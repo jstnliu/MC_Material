@@ -1,17 +1,20 @@
 import SearchForm from '../../components/SearchForm/SearchForm'
 
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import * as jikanAPI from '../../utilities/jikan-api'
 
 export default function SearchAnimePage() {
 
-    const [animeName, setAnimeName] = useState('')
+  const [animes, setAnime] = useState([])
+
+  function addAnime(anime) {
+    setAnime([...animes, anime])
+  }
 
   return (
     <>
         <div>SearchAnimePage</div>
-        <SearchForm />
+        <SearchForm addAnime={ addAnime } />
     </>
   )
 }

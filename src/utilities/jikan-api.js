@@ -36,27 +36,15 @@ export async function getAnime(id) {
 }
 
 // search for anime 
-export async function searchAnimeResults(search) {
+export async function searchAnimeResults(searchedAnime) {
     try {
-        const animeSearch = await axios.get(`${BASE_URL}/anime?q=${search}`, {
+        const animeSearch = await axios.get(`${BASE_URL}/anime?q=${searchedAnime}`, {
             params: queryParams
         })
-        if (animeSearch.data) {
-            const animeResults = animeSearch.data.data
-            const animeResultsData = animeResults.map(anime => {
-                return {
-                    title_english: anime.title_english,
-                    title_japanese: anime.title_japanese,
-                    images: anime.images.jpg.image_url,
-                    synopsis: anime.synopsis,
-                    episodes: anime.episodes,
-                    mal_id: anime.mal_id
-                }
-            });
-            console.log(animeResultsData)
-            return animeResultsData
-        }
-    } catch(error) {
+            // console.log(searchedAnime)
+            console.log(animeSearch.data.data)
+            return animeSearch.data.data
+        } catch(error) {
         console.error('Ya done Goofed Searchin', error);
         throw error
     }

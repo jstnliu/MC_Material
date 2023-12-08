@@ -10,7 +10,7 @@ const Anime = require('../../models/anime')
 //     req.body.userName = req.user.name;
 //     try {
 //         const character = await Character.create(req.body);
-//         res.redirect(`/posts/${post._id}`)
+//         
 //     } catch (error) {
 //         console.log(error);
 //     }
