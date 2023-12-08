@@ -19,7 +19,6 @@ MC Material is a site where users can join and share their thoughts about anime.
 
 </div>
  
- 
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
@@ -39,6 +38,8 @@ MC Material is a site where users can join and share their thoughts about anime.
 ## Getting Started
 
 </div>
+
+### [Live Link](https://mc-material-e7b29bbf3dd1.herokuapp.com/)
 
 Users simply have to create an account and they can start posting and searching for anime!
 
