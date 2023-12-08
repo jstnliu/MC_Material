@@ -11,7 +11,7 @@ const animeSchema = new Schema ({
     images: {
         type: String
     },
-    about: {
+    synopsis: {
         type: String
     },
     episodes: {

@@ -1,17 +1,30 @@
 const Anime = require('../../models/anime')
 
-// module.exports = {
+module.exports = {
+    show,
+    index,
+    create
+}
 
-// }
+async function show(req, res) {
+    const anime = await Anime.findOne({mal_id: req.params.mal_id})
+    console.log(anime)  
+    res.json(anime)
+}
 
-// // redo this for character to post
-// async function addToPost(req, res) {
-//     req.body.user = req.user._id;
-//     req.body.userName = req.user.name;
-//     try {
-//         const character = await Character.create(req.body);
-//         
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
+async function index(req, res) {
+    const index = await Anime.find({})
+    res.json(index)
+}
+
+async function create(req, res) {
+    try {
+        const anime = await Anime.create(req.body)
+        res.json(anime)
+    } catch(error) {
+        console.log(error)
+        res.json(error)
+    }
+}
+
+

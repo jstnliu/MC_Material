@@ -14,12 +14,10 @@ export default function NavBar({ user, setUser }) {
     <nav>
       <Link to='/posts' >All Posts</Link>
       &nbsp; | &nbsp;
-      <Link to='/posts/new'>New Post</Link>
-      &nbsp; | &nbsp;
       <Link to='/search'>Search Anime</Link>
       &nbsp; | &nbsp;
       <span>Hello, { user.name }</span>
-      &nbsp;&nbsp;
+      &nbsp;  &nbsp;
       <Link to='' onClick={ handleLogOut }>Log Out</Link>
     </nav>
   )

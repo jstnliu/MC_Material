@@ -22,8 +22,7 @@ const postSchema = new Schema ({
         required: true
     },
     anime: {
-        type: Schema.Types.ObjectId,
-        ref: 'Anime',
+        type: String,
         required: true
     },
     rating: {

@@ -8,7 +8,7 @@ module.exports = {
     delete: deletePost
 }
 
- async function deletePost(req, res) {
+async function deletePost(req, res) {
     // Check if user is logged in
     if (!req.user) return res.status(401).json({msg: 'Not Logged In'})
     try {
@@ -25,7 +25,7 @@ module.exports = {
     }   catch (error) {
         res.error(error)
     }
-  }
+}
 
 async function index(req ,res) {
     const index = await Post.find({})
@@ -41,7 +41,6 @@ async function create(req, res) {
     req.body.user = req.user._id
     req.body.userName = req.user.name
     try {
-        // const post = await Post.createPost(req.body)
         const post = await Post.create(req.body)
         res.json(post)
     } catch(error) {
@@ -49,4 +48,5 @@ async function create(req, res) {
         res.json(error)
     }
 }
+
 

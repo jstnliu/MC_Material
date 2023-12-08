@@ -21,7 +21,7 @@ export default function PostDetailItem({ postDetails, posts, setPosts }) {
     <>
         <h1>Are They MC Material?</h1>
         <div>
-          <p>Character: { postDetails.character }</p>
+          <p>Anime: { postDetails.anime }</p>
           <p>Rating: { postDetails.rating }</p>
           <p>Review: { postDetails.review }</p>
         <button
